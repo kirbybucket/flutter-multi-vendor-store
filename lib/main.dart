@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_vendor_store/core/common/utils/text_scale_wrapper.dart';
+import 'package:flutter_multi_vendor_store/core/config/theme/app_theme.dart';
+import 'package:flutter_multi_vendor_store/core/controllers/theme_controller.dart';
+import 'package:get/get.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Get.putAsync(() async => ThemeController());
   runApp(const MyApp());
 }
 
@@ -13,10 +19,9 @@ class MyApp extends StatelessWidget {
     return TextScaleWrapper(
       child: MaterialApp(
         title: 'Multi-Vendor E-Commerce App',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeController.to.themeMode,
       ),
     );
   }
