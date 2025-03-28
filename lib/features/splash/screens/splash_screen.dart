@@ -17,6 +17,57 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> _rotateAnimation;
 
   @override
+  void initState() {
+    super.initState();
+    _setupAnimations();
+    _handleNavigation();
+  }
+
+  Future<void> _handleNavigation() async {
+    await Future.delayed(const Duration(microseconds: 3000));
+    if (!mounted) return;
+  }
+
+  void _setupAnimations() {
+    _controller = AnimationController(
+      duration: const Duration(microseconds: 2500),
+      vsync: this,
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
+      ),
+    );
+
+    _scaleAnimation = Tween<double>(begin: 0.4, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.7, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _slideAnimation = Tween<double>(begin: -30, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.2, 0.8, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    _rotateAnimation = Tween<double>(begin: 0.2, end: 0.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.7, curve: Curves.easeOutCubic),
+      ),
+    );
+
+    Future.delayed(const Duration(milliseconds: 100), () {
+      _controller.forward();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -50,7 +101,13 @@ class _SplashScreenState extends State<SplashScreen>
   Widget _buildSplashContent(bool isDark) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [_buildLogoContainer()],
+      children: [
+        _buildLogoContainer(),
+        const SizedBox(height: 24),
+        _buildAppTitle(isDark),
+        const SizedBox(height: 8),
+        _buildAppSubtitle(isDark),
+      ],
     );
   }
 
@@ -70,7 +127,7 @@ class _SplashScreenState extends State<SplashScreen>
         boxShadow: [
           BoxShadow(
             color: AppColors.primary.withOpacity(0.3),
-            blurRadius: 10,
+            blurRadius: 20,
             offset: const Offset(0, 10),
           ),
         ],
@@ -79,6 +136,29 @@ class _SplashScreenState extends State<SplashScreen>
         Icons.shopping_bag_outlined,
         size: 48,
         color: Colors.white.withOpacity(0.95),
+      ),
+    );
+  }
+
+  Widget _buildAppTitle(bool isDark) {
+    return Text(
+      'E-Shop',
+      style: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w700,
+        color: isDark ? Colors.white : AppColors.primary,
+        letterSpacing: 1.5,
+      ),
+    );
+  }
+
+  Widget _buildAppSubtitle(bool isDark) {
+    return Text(
+      'Your One-Shop Stop',
+      style: TextStyle(
+        fontSize: 14,
+        color: isDark ? Colors.white : AppColors.textDark.withOpacity(0.7),
+        letterSpacing: 0.5,
       ),
     );
   }
