@@ -51,9 +51,9 @@ dependencies:
   path: ^1.8.3
   permission_handler: ^11.3.1
   timeago: ^3.7.0
-  fl_chart: ^0.69.0
+  fl_chart: ^0.70.2
   url_launcher: ^6.3.1
-  toastification: ^2.3.0
+  toastification: ^3.0.2
 
 dev_dependencies:
   flutter_test:
@@ -64,7 +64,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

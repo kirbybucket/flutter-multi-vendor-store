@@ -1,3 +1,16 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Actualiza el plugin de Android Gradle a una versión que soporte compileSdk 35.
+        classpath 'com.android.tools.build:gradle:8.1.0'
+        // Si usas Kotlin, puedes agregar (o actualizar) el plugin de Kotlin, por ejemplo:
+        // classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20'
+    }
+}
+
 allprojects {
     repositories {
         google()
