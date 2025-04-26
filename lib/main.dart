@@ -3,6 +3,7 @@ import 'package:flutter_multi_vendor_store/core/common/utils/text_scale_wrapper.
 import 'package:flutter_multi_vendor_store/core/config/theme/app_theme.dart';
 import 'package:flutter_multi_vendor_store/core/controllers/theme_controller.dart';
 import 'package:flutter_multi_vendor_store/core/routes/app_routes.dart';
+import 'package:flutter_multi_vendor_store/features/onboarding/controllers/onboarding_controller.dart';
 import 'package:flutter_multi_vendor_store/features/splash/controllers/splash_controller.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,7 @@ void main() async {
 
   await Get.putAsync(() async => ThemeController());
   Get.put(SplashController());
+  Get.put(OnboardingController());
   runApp(const MyApp());
 }
 
