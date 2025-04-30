@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_vendor_store/core/common/utils/validation_utils.dart';
+import 'package:flutter_multi_vendor_store/core/common/widgets/custom_button.dart';
 import 'package:flutter_multi_vendor_store/core/config/theme/app_colors.dart';
 import 'package:flutter_multi_vendor_store/features/auth/views/screens/forgot_password_screen.dart';
+import 'package:flutter_multi_vendor_store/features/auth/views/screens/sign_up_screen.dart';
 import 'package:flutter_multi_vendor_store/features/auth/views/widgets/custom_text_field.dart';
+import 'package:flutter_multi_vendor_store/features/auth/views/widgets/social_button.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -18,7 +22,14 @@ class _SignInScreenState extends State<SignInScreen> {
   String? emailError;
   String? passwordError;
 
-  void validateInputs() {}
+  void validateInputs() {
+    setState(() {
+      emailError = ValidationUtils.validateEmail(emailController.text);
+      passwordError = ValidationUtils.validatePassword(passwordController.text);
+    });
+  }
+
+  bool get isValid => emailError == null && passwordError == null;
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +109,92 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
 
               const SizedBox(height: 24),
+              // signin button
+              CustomButton(
+                text: 'Sign In',
+                onPressed: () {},
+                isLoading: isLoading,
+                isDisabled: !isValid,
+              ),
+
+              const SizedBox(height: 24),
+              Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: isDark ? Colors.white38 : Colors.grey[400],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      'OR',
+                      style: TextStyle(
+                        color: isDark ? Colors.white70 : Colors.grey[600],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: isDark ? Colors.white38 : Colors.grey[400],
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 24),
+
+              // social icons
+              Row(
+                children: [
+                  Expanded(
+                    child: SocialButton(
+                      icon: 'assets/logos/google.png',
+                      lable: 'Google',
+                      onPressed: () {},
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: SocialButton(
+                      icon: 'assets/logos/facebook.png',
+                      lable: 'Google',
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 24),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: TextStyle(
+                      color: isDark ? Colors.white70 : AppColors.textDark,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUpScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: isDark ? Colors.white : AppColors.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
