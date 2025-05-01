@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_vendor_store/core/config/theme/app_colors.dart';
+import 'package:flutter_multi_vendor_store/features/splash/controllers/splash_controller.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,13 +26,16 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _handleNavigation() async {
-    await Future.delayed(const Duration(microseconds: 3000));
+    await Future.delayed(const Duration(milliseconds: 3000));
     if (!mounted) return;
+
+    final route = await SplashController.to.determineInitialRoute();
+    Get.offAllNamed(route);
   }
 
   void _setupAnimations() {
     _controller = AnimationController(
-      duration: const Duration(microseconds: 2500),
+      duration: const Duration(milliseconds: 2500),
       vsync: this,
     );
 

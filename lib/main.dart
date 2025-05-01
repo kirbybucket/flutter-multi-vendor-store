@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextScaleWrapper(
       child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Multi-Vendor E-Commerce App',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,

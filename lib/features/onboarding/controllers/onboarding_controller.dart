@@ -14,17 +14,17 @@ class OnboardingController extends GetxController {
     const OnboardingItem(
       title: 'Welcome to E-Shop',
       description: 'Discover Amazing Products from various vendors',
-      image: 'assets/images/onboarding.png',
+      image: 'assets/images/intro.png',
     ),
     const OnboardingItem(
       title: 'Easy Shopping',
       description: 'Shop your favorite products with just a few taps',
-      image: 'assets/images/onboarding2.png',
+      image: 'assets/images/intro1.png',
     ),
     const OnboardingItem(
       title: 'Fast Delivery',
       description: 'Get your products delivered right to your doorstep',
-      image: 'assets/images/onboarding3.png',
+      image: 'assets/images/intro3.png',
     ),
   ];
 
