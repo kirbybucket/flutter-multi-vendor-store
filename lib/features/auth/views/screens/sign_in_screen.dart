@@ -6,6 +6,7 @@ import 'package:flutter_multi_vendor_store/features/auth/views/screens/forgot_pa
 import 'package:flutter_multi_vendor_store/features/auth/views/screens/sign_up_screen.dart';
 import 'package:flutter_multi_vendor_store/features/auth/views/widgets/custom_text_field.dart';
 import 'package:flutter_multi_vendor_store/features/auth/views/widgets/social_button.dart';
+import 'package:flutter_multi_vendor_store/main_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -112,7 +113,14 @@ class _SignInScreenState extends State<SignInScreen> {
               // signin button
               CustomButton(
                 text: 'Sign In',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MainScreen(),
+                    ),
+                  );
+                },
                 isLoading: isLoading,
                 isDisabled: !isValid,
               ),
