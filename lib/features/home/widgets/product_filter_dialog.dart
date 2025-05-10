@@ -147,6 +147,56 @@ class _ProductFilterDialogState extends State<ProductFilterDialog> {
               },
             ),
             const SizedBox(height: 30),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      widget.onReset();
+                      Navigator.pop(context);
+                    },
+                    label: const Text('Reset'),
+                    icon: const Icon(
+                      Icons.refresh,
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                      ),
+                      backgroundColor:
+                          isDark ? Colors.grey[800] : Colors.grey[100],
+                      foregroundColor: isDark ? Colors.white70 : Colors.black87,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: () {
+                      widget.onApply(_tempPriceRange, _tempCategory);
+                      Navigator.pop(context);
+                    },
+                    label: const Text('Apply'),
+                    icon: const Icon(
+                      Icons.check,
+                    ),
+                    style: FilledButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                      ),
+                      backgroundColor: Theme.of(context).primaryColor,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
