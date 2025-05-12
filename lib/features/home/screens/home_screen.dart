@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_vendor_store/features/home/widgets/categories_section.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/home_app_bar.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/home_search_bar.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/product_filter_dialog.dart';
@@ -69,6 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 onFilterTap: () {
                   _showFilterDialog();
                 },
+              ),
+              CategoriesSection(
+                categories: categories,
+                onViewAllTap: (context) {},
               ),
             ],
           ),
