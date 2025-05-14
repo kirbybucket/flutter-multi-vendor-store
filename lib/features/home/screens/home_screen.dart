@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_vendor_store/features/home/widgets/ads_section.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/categories_section.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/home_app_bar.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/home_search_bar.dart';
@@ -75,6 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 categories: categories,
                 onViewAllTap: (context) {},
               ),
+
+              // ads section
+              const AdsSection(),
             ],
           ),
         ),
