@@ -3,6 +3,7 @@ import 'package:flutter_multi_vendor_store/features/home/widgets/ads_section.dar
 import 'package:flutter_multi_vendor_store/features/home/widgets/categories_section.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/home_app_bar.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/home_search_bar.dart';
+import 'package:flutter_multi_vendor_store/features/home/widgets/personalized_recommendations.dart';
 import 'package:flutter_multi_vendor_store/features/home/widgets/product_filter_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -79,6 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
               // ads section
               const AdsSection(),
+
+              // personalized recommendations
+              const PersonalizedRecommendations(),
             ],
           ),
         ),

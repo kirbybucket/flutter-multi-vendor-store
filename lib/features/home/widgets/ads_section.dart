@@ -21,7 +21,6 @@ class AdsSection extends StatelessWidget {
           child: CarouselSlider.builder(
             itemCount: adImages.length,
             itemBuilder: (context, index, realIndex) {
-              final adImage = adImages[index];
               return Container(
                 margin: const EdgeInsets.only(right: 2, bottom: 10),
                 width: double.infinity,
